@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   patch 'users/:id', to: 'users/profiles#update'
   root to: "home#index"
   resources :users  
-
+  resources :rooms
+  resources :homes
 end
 
