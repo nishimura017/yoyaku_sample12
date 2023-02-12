@@ -10,5 +10,9 @@ Rails.application.routes.draw do
   resources :users  
   resources :rooms
   resources :homes
+  # routes.rb
+ 
+  resources :reservations
+
 end
 

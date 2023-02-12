@@ -1,3 +1,17 @@
+
+<% if @room.errors.any? %>
+
+  <div class="alert alert-danger">
+    <h4>以下のエラーがあります</h4>
+    <ul>
+      <% @room.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 <%= form_with model: @room, url: rooms_path, local: true do |f| %>
     <div class="form-group">
       <%= f.label :施設名 %>
