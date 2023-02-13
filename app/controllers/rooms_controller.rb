@@ -45,6 +45,13 @@ def destroy
   redirect_to rooms_url, notice: '宿泊施設を削除しました'
 end
 
+def post
+  @rooms = Room.all
+  @q = Room.ransack(params[:q])
+  @results = @q.result
+  @number = @rooms.count
+end
+
 private
   def room_params
     params.require(:room).permit(:roomname, :description, :price, :address, :room_image, :user_id)

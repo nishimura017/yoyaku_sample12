@@ -1,0 +1,20 @@
+
+<%= form_with model: @reservation, method: :post, url: reservation_confirm_path(@room) do |f| %>
+
+  <div class="field">
+    <%= f.label :checkin_at %>
+    <%= f.date_field :checkin_at %>
+  </div>
+  <div class="field">
+    <%= f.label :checkout_at %>
+    <%= f.date_field :checkout_at %>
+  </div>
+  <div class="field">
+    <%= f.label :person_count %>
+    <%= f.number_field :person_count %>
+  </div>
+  <%= f.hidden_field :room_id, value: @room.id %>
+
+  <%= f.submit '保存' %>
+  
+<% end %>
