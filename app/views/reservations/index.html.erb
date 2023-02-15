@@ -14,9 +14,9 @@
   <tbody>
     <% @reservations.each do |reservation| %>
       <tr>
-        <td><%= link_to(reservation.room.roomname, controller: 'rooms', action: 'show', id: reservation.room.id) %></td>
+        <td><%= link_to reservation.room.roomname, room_reservations_path(reservation.room_id) %></td>
         <td><%= reservation.room.description %></td>
-        <td><%= reservation.room.price %></td>
+        <td><%= reservation.calc_price %></td>
         <td><%= reservation.checkin_at %></td>
         <td><%= reservation.checkout_at %></td>
         <td><%= reservation.created_at %></td>

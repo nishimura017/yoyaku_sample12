@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :reservations
   has_many :rooms, through: :reservations
+
+  def self.ransackable_associations(auth_object = nil)
+    ["reservation", "reservations", "user"]
+  end
 end

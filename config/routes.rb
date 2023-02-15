@@ -11,18 +11,28 @@ Rails.application.routes.draw do
   resources :rooms
   post "/rooms/:id", to: "reservations#create", as: "room_reservation"
   resources :homes
-  # routes.rb
-
   resources :reservations
-  resources :rooms do
-    resources :reservations, only: [:create]
-  end
 
   resources :rooms do
     resources :reservations, only: [:create]
   end
 
-  get "room/post", to: "rooms#post"
+  get "room/search", to: "rooms#search"
 
+  resources :users do
+    collection do
+      get "search"
+    end
+  end
+
+  # GET /rooms/in_area/:area
+  get "/rooms/in_area/:area", to: "rooms#in_area"
+  # GET /rooms/search/:query
+  get "/rooms/search/:query", to: "rooms#search"
+
+  get "room/result", to: "rooms#result", as: "room_result"
+
+  get "reservation/confirm", to: "reservations#confirm"
   post "reservation/confirm", to: "reservations#confirm"
+  get "rooms/:id/reservations", to: "rooms#show"
 end

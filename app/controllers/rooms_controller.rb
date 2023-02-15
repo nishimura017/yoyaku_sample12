@@ -1,16 +1,22 @@
 
 class RoomsController < ApplicationController
+
+
 def index
   @rooms = current_user.rooms
   @rooms = Room.all
 end
 
 def show
-  @room = Room.find(params[:id])
   @rooms = Room.all
-  @rooms = @rooms.where(area: params[:area]) if params[:area].present?
-  @rooms = @rooms.where("name like ?", "%#{params[:keyword]}%") if params[:keyword].present?
+
+  @room = Room.find(params[:id])
+
+  @reservation = Reservation.new(room_id: @room.id)
+ 
+  
 end
+
 
 def new
   @room = Room.new
@@ -45,14 +51,28 @@ def destroy
   redirect_to rooms_url, notice: '宿泊施設を削除しました'
 end
 
-def post
-  @rooms = Room.all
-  @q = Room.ransack(params[:q])
-  @results = @q.result
-  @number = @rooms.count
+def in_area
+  @rooms = Room.in_area(params[:area])
 end
 
+def search
+  @rooms = Room.search(params[:query])
+end
+
+def result
+  @rooms = Room.all
+  @rooms = @rooms.in_area(params[:area]) if params[:area].present?
+  @rooms = @rooms.search(params[:query]) if params[:query].present?
+  @count = @rooms.count
+end
+
+
 private
+
+  def confirm_room_params
+    params.require(:room).permit(:checkin_at, :checkout_at, :person_count, :room_id, :calc_price).merge(user_id: current_user.id)
+  end
+
   def room_params
     params.require(:room).permit(:roomname, :description, :price, :address, :room_image, :user_id)
   end

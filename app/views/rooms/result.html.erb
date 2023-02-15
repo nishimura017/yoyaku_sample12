@@ -1,0 +1,24 @@
+
+<%= form_tag room_result_path, method: :get do %>
+  <%= label_tag :area, "エリア検索" %>
+  <%= text_field_tag :area, params[:area], placeholder: "例：東京" %>
+  <%= label_tag :query, "フリーワード検索" %>
+  <%= text_field_tag :query, params[:query], placeholder: "例：和室" %>
+  <%= submit_tag "検索" %>
+<% end %>
+
+<% if @rooms.present? %>
+<h3>検索結果：<%= @count %>件</h3>
+  <% @rooms.each do |room| %>
+    <div>
+      <h2><%= room.roomname %></h2>
+      <p><%= room.description %></p>
+      <p><%= room.address %></p>
+      <p>料金:¥ <%= room.price %></p>
+      <%= link_to "予約する", room_reservations_path(room_id: room.id) %>
+    </div>
+  <% end %>
+<% else %>
+  <h3>検索結果：０件</h3>
+  <%= link_to "戻る", :back %>
+<% end %>

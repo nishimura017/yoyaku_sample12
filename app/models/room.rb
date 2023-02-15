@@ -7,11 +7,7 @@ class Room < ApplicationRecord
   has_one :reservation
   has_many :reservations
 
-  def self.search(search)
-    if search != ""
-      Room.where(["room_name LIKE(?) OR introduction LIKE(?) OR address LIKE(?)", "%#{search}%", "%#{search}%", "%#{search}%"])
-    else
-      Room.all
-    end
-  end
+  # scopeで検索条件を設定する
+  scope :in_area, ->(area) { where("address LIKE ?", "%#{area}%") }
+  scope :search, ->(query) { where("roomname LIKE :query OR description LIKE :query", query: "%#{query}%") }
 end
