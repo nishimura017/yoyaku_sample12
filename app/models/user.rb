@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :reservations
   has_many :rooms, through: :reservations
 
+  mount_uploader :profile_image, ProfileImageUploader
+
   def self.ransackable_associations(auth_object = nil)
     ["reservation", "reservations", "user"]
   end

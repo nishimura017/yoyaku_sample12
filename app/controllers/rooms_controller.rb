@@ -70,7 +70,7 @@ end
 private
 
   def confirm_room_params
-    params.require(:room).permit(:checkin_at, :checkout_at, :person_count, :room_id, :calc_price).merge(user_id: current_user.id)
+    params.require(:room).permit(:checkin_at, :checkout_at, :person_count, :room_id, :calc_price, :room_image).merge(user_id: current_user.id)
   end
 
   def room_params

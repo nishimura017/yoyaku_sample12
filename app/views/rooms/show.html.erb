@@ -2,6 +2,12 @@
 
 <table>
 	<tr>
+  <% if @room.room_image.present? %>
+  <%= image_tag @room.room_image.url, alt: "room image" %>
+<% else %>
+  <%= image_tag "/images/default-room-image.png", alt: "Default room image" %>
+<% end %>
+
 		<td><%= @room.roomname %></td>
 		<td><%= @room.address %></td>
 		<td><%= @room.description %></td>

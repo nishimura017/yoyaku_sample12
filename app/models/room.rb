@@ -7,6 +7,8 @@ class Room < ApplicationRecord
   has_one :reservation
   has_many :reservations
 
+  mount_uploader :room_image, RoomImageUploader
+
   # scopeで検索条件を設定する
   scope :in_area, ->(area) { where("address LIKE ?", "%#{area}%") }
   scope :search, ->(query) { where("roomname LIKE :query OR description LIKE :query", query: "%#{query}%") }

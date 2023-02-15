@@ -14,6 +14,14 @@
   <tbody>
     <% @reservations.each do |reservation| %>
       <tr>
+      <td>
+      <% if reservation.room.room_image.present? %>
+        <%= image_tag reservation.room.room_image.url, alt: "room image" %>
+      <% else %>
+        <%= image_tag "/images/default-room-image.png", alt: "Default room image" %>
+      <% end %>
+      </td>
+
         <td><%= link_to reservation.room.roomname, room_reservations_path(reservation.room_id) %></td>
         <td><%= reservation.room.description %></td>
         <td><%= reservation.calc_price %></td>
