@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th></th>
       <th>施設名</th>
       <th>紹介文</th>
       <th>料金</th>
@@ -25,9 +26,9 @@
         <td><%= link_to reservation.room.roomname, room_reservations_path(reservation.room_id) %></td>
         <td><%= reservation.room.description %></td>
         <td><%= reservation.calc_price %></td>
-        <td><%= reservation.checkin_at %></td>
-        <td><%= reservation.checkout_at %></td>
-        <td><%= reservation.created_at %></td>
+        <td><%= reservation.checkin_at.to_s(:datetime_jp) %></td>
+        <td><%= reservation.checkout_at.to_s(:datetime_jp) %></td>
+        <td><%= reservation.created_at.to_s(:datetime_jp1) %></td>
       </tr>
     <% end %>
   </tbody>

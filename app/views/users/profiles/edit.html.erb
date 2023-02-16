@@ -1,14 +1,23 @@
 <%= form_for @user do |f| %>
-    <%= f.label :username %>
+  <div> 
+    <%= f.label :名前 %>
     <%= f.text_field :username %>
-  
-    <%= f.label :profile %>
-    <%= f.text_area :profile %>
+  </div>
 
-    <%= f.label :avatar %>
+  <div>
+    <%= f.label :自己紹介 %>
+    <%= f.text_area :profile %>
+  </div>
+
+  <div>
+    <%= f.label :プロフィール画像 %>
     <%= f.file_field :profile_image %>
+  </div>
+
+  <div>
+    <%= f.submit "保存" %>
+  </div>
   
-    <%= f.submit "Save" %>
-  <% end %>
+<% end %>
   
   

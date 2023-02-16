@@ -5,6 +5,7 @@ class RoomsController < ApplicationController
 def index
   @rooms = current_user.rooms
   @rooms = Room.all
+  
 end
 
 def show
@@ -13,6 +14,7 @@ def show
   @room = Room.find(params[:id])
 
   @reservation = Reservation.new(room_id: @room.id)
+  @user = current_user
  
   
 end

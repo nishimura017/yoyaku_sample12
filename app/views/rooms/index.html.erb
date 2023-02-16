@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th></th>
       <th>施設名</th>
       <th>紹介文</th>
       <th>料金</th>
@@ -25,7 +26,7 @@
         <td><%= link_to room.roomname, room_reservations_path(room.id) %></td>
         <td><%= room.description %></td>
         <td><%= room.price %></td>
-        <td><%= room.updated_at %></td>
+        <td><%= room.updated_at.to_s(:datetime_jp) %></td>
         <td><%= link_to '編集', edit_room_path(room) %></td>
         <td><%= link_to '削除', room_path(room), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
       </tr>

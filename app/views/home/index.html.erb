@@ -1,6 +1,3 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-
 <%= form_tag room_result_path, method: :get do %>
   <%= label_tag :area, "エリア検索" %>
   <%= text_field_tag :area, params[:area], placeholder: "例：東京" %>
