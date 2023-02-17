@@ -44,4 +44,14 @@ class ProfileImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  def extension_allowlist
+    %w(jpg jpeg gif png)
+  end
+
+  include CarrierWave::MiniMagick
+
+  version :profile_image do
+    process resize_to_fill: [70, 70]
+  end
 end

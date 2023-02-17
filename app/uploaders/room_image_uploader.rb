@@ -44,4 +44,14 @@ class RoomImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  def extension_allowlist
+    %w(jpg jpeg gif png)
+  end
+
+  include CarrierWave::MiniMagick
+
+  version :room_image do
+    process resize_to_fill: [120, 50]
+  end
 end

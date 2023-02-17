@@ -2,9 +2,10 @@
 
   <div>
     <% if @user.profile_image.present? %>
-      <%= image_tag @user.profile_image.url, alt: "Profile image" %>
+      <%= image_tag @user.profile_image.url(:profile_image), alt: "Profile image" %>
     <% else %>
       <%= image_tag "/images/default-profile-image.png", alt: "Default profile image" %>
+    <% end %>
   </div>
   
   <div>
@@ -17,4 +18,4 @@
 
   <%= link_to "プロフィール編集", users_profile_edit_path, classclass:"nav-link" %>
   
-<% end %>
+

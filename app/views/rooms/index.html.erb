@@ -1,37 +1,40 @@
 <h2>登録済み施設一覧</h2>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th></th>
-      <th>施設名</th>
-      <th>紹介文</th>
-      <th>料金</th>
-      <th>作成日</th>
-      <th>編集</th>
-      <th>削除</th>
+      <th scope="col"></th>
+      <th scope="col">画像</th>
+      <th scope="col">施設名</th>
+      <th scope="col">紹介文</th>
+      <th scope="col">料金</th>
+      <th scope="col">作成日</th>
+      <th scope="col">編集</th>
+      <th scope="col">削除</th>
     </tr>
   </thead>
   <tbody>
     <% @rooms.each do |room| %>
+      <% if room.user_id == current_user.id %>
       <tr>
+      <th scope="row"><%=room.room_id%></th>
       <td>
       <% if room.room_image.present? %>
-        <%= image_tag room.room_image.url, alt: "room image" %>
+        <%= image_tag room.room_image.url(:room_image), alt: "room image", width: 120, height: 60 %>
       <% else %>
-        <%= image_tag "/images/default-room-image.png", alt: "Default room image" %>
+        <%= image_tag "/images/default-room-image.png", alt: "Default room image", width: 120, height: 60 %>
       <% end %>
       </td>
 
         <td><%= link_to room.roomname, room_reservations_path(room.id) %></td>
         <td><%= room.description %></td>
-        <td><%= room.price %></td>
+        <td><p>¥<%= room.price %>~</p></td>
         <td><%= room.updated_at.to_s(:datetime_jp) %></td>
         <td><%= link_to '編集', edit_room_path(room) %></td>
         <td><%= link_to '削除', room_path(room), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
       </tr>
+      <% end%>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to '新しい部屋の登録', new_room_path %>

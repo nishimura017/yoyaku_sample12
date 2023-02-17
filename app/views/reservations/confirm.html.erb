@@ -4,9 +4,9 @@
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :room_id, value: @room.id %>
   <%= f.hidden_field :person_count, value: @reservation.person_count %>
-  <%= f.label :checkin_at, "開始日" %>
+  <%= f.label :checkin_at, "チェックイン" %>
   <%= f.date_field :checkin_at, value:@reservation.checkin_at ,readonly: true %>
-  <%= f.label :checkout_at, "終了日" %>
+  <%= f.label :checkout_at, "チェックアウト" %>
   <%= f.date_field :checkout_at, value:@reservation.checkout_at ,readonly: true %>
   <p>宿泊日数：<%= @days %>日</p>
   <p>人数：<%= @reservation.person_count %>人</p>

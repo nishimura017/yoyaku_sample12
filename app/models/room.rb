@@ -6,6 +6,7 @@ class Room < ApplicationRecord
   belongs_to :user, optional: true
   has_one :reservation
   has_many :reservations
+  has_many :reservations, dependent: :destroy
 
   mount_uploader :room_image, RoomImageUploader
 
