@@ -1,0 +1,46 @@
+<% provide(:title, "Edit Room") %>
+<h1>施設情報の編集</h1>
+
+<%= form_with model: @room, url: room_path(@room), local: true do |f| %>
+
+  <% if @room.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@room.errors.count, "error") %> prohibited this room from being saved:</h2>
+      <ul>
+        <% @room.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :施設画像 %>
+    <%= f.file_field :room_image %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :施設名 %>
+    <%= f.text_field :roomname, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :住所 %>
+    <%= f.text_field :address, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :紹介文 %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :料金 %>
+    <%= f.text_field :price, class: "form-control" %>
+  </div>
+
+  <%= f.submit "更新", class: "btn btn-primary" %>
+
+<% end %>
+
+<%= link_to 'Back', rooms_path %>

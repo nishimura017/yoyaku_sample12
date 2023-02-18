@@ -1,0 +1,9 @@
+<div class="search-field">
+  <%= form_tag room_result_path, method: :get do %>
+    <%= label_tag :area, "エリア検索" %>
+    <%= text_field_tag :area, params[:area], placeholder: "例：東京" %>
+    <%= label_tag :query, "フリーワード検索" %>
+    <%= text_field_tag :query, params[:query], placeholder: "例：和室" %>
+    <%= submit_tag "検索" %>
+  <% end %>
+</div>

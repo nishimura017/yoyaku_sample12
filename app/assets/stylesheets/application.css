@@ -12,4 +12,47 @@
  *
  *= require_tree .
  *= require_self
- */
+ */ 
+
+html {
+	box-sizing: border-box;
+	display: block;
+	height: 100%;
+	}
+
+header {
+	margin-top: 0px;
+	width: 100%;
+	position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+		background-color: #1c1d3b;
+    height: 80px;
+	
+}
+
+body{
+	overflow: auto;
+	height: 100%;
+	}
+
+.nav-contents {
+	display: flex!important;
+	
+}
+
+.dropdown {
+	display: block;
+}
+
+.profile-image {
+	margin-right: 10px;
+	border-radius: 60px;
+	box-sizing: border-box;
+	border-radius: 60px;
+	overflow: hidden;
+}

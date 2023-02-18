@@ -1,0 +1,36 @@
+<h2>予約済み施設一覧</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">画像</th>
+      <th scope="col">施設名</th>
+      <th scope="col">紹介文</th>
+      <th scope="col">料金</th>
+      <th scope="col">チェックイン</th>
+      <th scope="col">チェックアウト</th>
+      <th scope="col">予約確定日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <th scope="row"><%reservation.room.room_id%></th>
+        <td>
+          <% if reservation.room.room_image.present? %>
+            <%= image_tag reservation.room.room_image.url(:room_image), alt: "room image", width: 120, height: 60 %>
+          <% else %>
+            <%= image_tag "/images/default-room-image.png", alt: "Default room image",  width: 120, height: 60 %>
+          <% end %>
+        </td>
+        <td><%= link_to reservation.room.roomname, room_reservations_path(reservation.room_id) %></td>
+        <td><%= reservation.room.description %></td>
+        <td><p>¥ <%= reservation.calc_price %>~</p></td>
+        <td><%= reservation.checkin_at.to_s(:datetime_jp) %></td>
+        <td><%= reservation.checkout_at.to_s(:datetime_jp) %></td>
+        <td><%= reservation.created_at.to_s(:datetime_jp1) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

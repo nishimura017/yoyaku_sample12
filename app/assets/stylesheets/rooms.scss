@@ -1,0 +1,24 @@
+// Place all the styles related to the Rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.room-show {
+    display: block;
+   
+}
+
+.room-show-container {
+    display: flex;
+    
+}
+.room-show-image {
+    display: block;
+    width: fit-content;
+}
+
+.room-show-information {
+    display: block;
+    width: 700px;
+    text-align: center;
+}
+

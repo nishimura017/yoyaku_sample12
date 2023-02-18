@@ -1,0 +1,18 @@
+<h2>予約の確認</h2>
+
+<%= form_with model: @reservation,local: true do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.hidden_field :person_count, value: @reservation.person_count %>
+  <%= f.label :checkin_at, "チェックイン" %>
+  <%= f.date_field :checkin_at, value:@reservation.checkin_at ,readonly: true %>
+  <%= f.label :checkout_at, "チェックアウト" %>
+  <%= f.date_field :checkout_at, value:@reservation.checkout_at ,readonly: true %>
+  <p>宿泊日数：<%= @days %>日</p>
+  <p>人数：<%= @reservation.person_count %>人</p>
+  <%= f.label :calc_price, "合計金額" %>
+  <%= f.text_field :calc_price, value:@price ,readonly: true, class: "form-control mb-4" %>
+  <p class="reservations-new-check-content">上記内容でよろしければ「予約を確定」を押してください</p>
+  <%= f.submit"予約を確定",class:'btn btn-primary form-control my-3' %>
+  <%= link_to 'ルーム詳細に戻る', room_path(@room.id), class: 'btn btn-secondary form-control' %>
+<% end %>
