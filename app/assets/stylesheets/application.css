@@ -12,38 +12,47 @@
  *
  *= require_tree .
  *= require_self
- */
- 
+ */ 
 
 html {
-    box-sizing: border-box;
-    display: block;
-    height: 100%;
-}
+	box-sizing: border-box;
+	display: block;
+	height: 100%;
+	}
 
 header {
-    box-sizing: border-box;
-    display: block;
-    position: fixed; /* ヘッダーを固定する */
-    top: 0; /* 上部から配置の基準位置を決める */
-    left: 0; /* 左から配置の基準位置を決める */
-    width: 100%; /* ヘッダーの横幅を指定する */
-    height: 90px; /* ヘッダーの高さを指定する */
-    padding: 10px; /* ヘッダー内側の余白を指定する(上下左右) */
-    background-color: #000080; /* ヘッダーの背景色を指定する */
-    color: #000000; /* ヘッダーのフォントの色を指定する */
+	margin-top: 0px;
+	width: 100%;
+	position: relative;
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+		background-color: #1c1d3b;
+    height: 80px;
+	
 }
 
 body{
-    margin: 20px; /* bodyの外側の余白を指定する */
-    margin-top: 90px;
-    overflow: auto;
-    height: 100%;
-    }
+	overflow: auto;
+	height: 100%;
+	}
 
-    .nav-contents {
-        display: flex;
-        justify-content: right;
-    }
+.nav-contents {
+	display: flex!important;
+	
+}
+
+.dropdown {
+	display: block;
+}
+
+.profile-image {
+	margin-right: 10px;
+	border-radius: 60px;
+	box-sizing: border-box;
+	border-radius: 60px;
+	overflow: hidden;
+}

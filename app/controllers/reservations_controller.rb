@@ -17,10 +17,11 @@ class ReservationsController < ApplicationController
     @price = @days * @room.price * @reservation.person_count
     @calc_price = @price
     @reservation.calc_price = @price
+
     if @days <= 0
-        redirect_to @room, alert:"終了日は開始日より後にしてください"
-      elsif @reservation.person_count <=0 
-        redirect_to @room, alert:"正しい人数を入力してください"
+      redirect_to @room, alert:"終了日は開始日より後にしてください"
+    elsif @reservation.person_count <=0 
+      redirect_to @room, alert:"正しい人数を入力してください"
     end
   end
 

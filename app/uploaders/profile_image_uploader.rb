@@ -52,6 +52,6 @@ class ProfileImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   version :profile_image do
-    process resize_to_fill: [70, 70]
+    process resize_to_fill: [40, 40]
   end
 end

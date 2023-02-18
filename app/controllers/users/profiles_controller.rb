@@ -30,5 +30,4 @@ class Users::ProfilesController < ApplicationController
 		end
 	end
 	
-	
 end

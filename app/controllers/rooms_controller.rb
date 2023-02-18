@@ -1,21 +1,14 @@
 
 class RoomsController < ApplicationController
-
   
   def index
   @rooms = Room.all
-
   end
 
   def show
-  
     @room = Room.find(params[:id])
     @reservation = Reservation.new(room_id: @room.id)
-
-  
-    
   end
-
 
   def new
     @room = Room.new
@@ -66,7 +59,6 @@ class RoomsController < ApplicationController
     @rooms = @rooms.search(params[:query]) if params[:query].present?
     @count = @rooms.count
   end
-
 
     private
 
